@@ -1,0 +1,44 @@
+server:
+  port: 6000
+
+RedisConfig:
+  host: 43.139.126.6
+  port: 6380
+  database: 0
+  password: 2531130613
+
+spring:
+  application:
+    # 应用名称
+    name: QimenIDS
+
+  thymeleaf:
+    # 开启模板缓存（默认值： true ）
+    cache: false
+    # 检查模板是否存在，然后再呈现
+    check-template: true
+    # 检查模板位置是否正确（默认值 :true ）
+    check-template-location: true
+    #Content-Type 的值（默认值： text/html ）
+    servlet:
+      content-type: text/html
+    # 开启 MVC Thymeleaf 视图解析（默认值： true ）
+    enabled: true
+    # 模板编码
+    encoding: UTF-8
+    # 要运⽤于模板之上的模板模式。另⻅ StandardTemplate-ModeHandlers( 默认值： HTML5)
+    mode: HTML
+    # 在构建 URL 时添加到视图名称前的前缀（默认值： classpath:/templates/ ）
+    prefix: file:public/templates/
+    # 在构建 URL 时添加到视图名称后的后缀（默认值： .html ）
+    suffix: .html
+  redis:
+    host: ${RedisConfig.host}
+    port: ${RedisConfig.port}
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 3000ms
+    timeout: 3000ms
+    database: ${RedisConfig.database}
+    password: ${RedisConfig.password}
